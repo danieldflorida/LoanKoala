@@ -73,6 +73,7 @@ function calculateValues(loanAmount, payments, rate){
 }
 
 function displayData(loanAmount, returnObjArray, payments){
+    let regexAddCommas = /\B(?=(\d{3})+(?!\d))/g;
     let tableBody = document.getElementById("tableBody");
     let templateRow = document.getElementById("tableRowTemplate");
     tableBody.innerHTML = "";
@@ -82,29 +83,28 @@ function displayData(loanAmount, returnObjArray, payments){
         let rowCols = tableRow.querySelectorAll("td");
 
         rowCols[0].textContent = (returnObjArray[index].month);
-        rowCols[1].textContent = (returnObjArray[index].totalMonthlyPayment).toFixed(2);
-        rowCols[2].textContent = (returnObjArray[index].principalPayment).toFixed(2);
-        rowCols[3].textContent = (returnObjArray[index].interestPayment).toFixed(2);
+        rowCols[1].textContent = "$"+(returnObjArray[index].totalMonthlyPayment).toFixed(2).toString().replace(regexAddCommas, ',');
+        rowCols[2].textContent = "$"+(returnObjArray[index].principalPayment).toFixed(2).toString().replace(regexAddCommas, ',');
+        rowCols[3].textContent = "$"+(returnObjArray[index].interestPayment).toFixed(2).toString().replace(regexAddCommas, ',');
         //rowCols[4].textContent = (returnObjArray[index].totalInterestPayment).toFixed(2);
         rowCols[4].textContent = (returnObjArray[index].totalInterestPayment);
-        rowCols[5].textContent = (returnObjArray[index].remainingBalance).toFixed(2);
+        rowCols[5].textContent = "$"+(returnObjArray[index].remainingBalance).toFixed(2).toString().replace(regexAddCommas, ',');
 
         if (index == returnObjArray.length -1){
-
             let tempTotalInterest = Number(rowCols[4].textContent);
-            let totalCost = (tempTotalInterest + loanAmount).toFixed(2);
+            let totalCost = "$"+(tempTotalInterest + loanAmount).toFixed(2).toString().replace(regexAddCommas, ',');
             //totalCost = totalCost.toFixed(2);
 
             //change to 2 decimal places when printing to screen
-            rowCols[4].textContent = Number(tempTotalInterest).toFixed(2);
-
-            document.getElementById("monthlyPayment").innerText =  `$${rowCols[1].textContent}`;
-            document.getElementById("totalPrincipal").innerText =  `$${loanAmount}`;            
-            document.getElementById("totalInterest").innerText =  `$${rowCols[4].textContent}`;
-            document.getElementById("totalCost").innerText =  `$${totalCost}`;
+            rowCols[4].textContent = "$"+(Number(tempTotalInterest).toFixed(2).toString().replace(regexAddCommas, ','));
+            loanAmount = "$"+(Number(loanAmount).toFixed(2).toString().replace(regexAddCommas, ','));
+            document.getElementById("monthlyPayment").innerText =  `${rowCols[1].textContent}`;
+            document.getElementById("totalPrincipal").innerText =  `${loanAmount}`;            
+            document.getElementById("totalInterest").innerText =  `${rowCols[4].textContent}`;
+            document.getElementById("totalCost").innerText =  `${totalCost}`;
         }else {
             //change to 2 decimal places when printing to screen
-            rowCols[4].textContent = Number(rowCols[4].textContent).toFixed(2);
+            rowCols[4].textContent = "$"+(Number(rowCols[4].textContent).toFixed(2).toString().replace(regexAddCommas, ','));
         }
 
 
