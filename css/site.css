@@ -3,6 +3,7 @@
     --secondary-color: #C3AEFF;
     --dark-color: #414141;
     --white-color: #e7e7e7;
+    --pink-color: #63013d;
 }
 body {
     color: var(--dark-color);
@@ -48,6 +49,13 @@ footer .social > a:hover {
     color: var(--secondary-color);
 }
 
+
+.heading-color {
+    color: var(--pink-color);
+}
+.table-head {
+    background-color: var(--pink-color);
+}
 code[class*="language-"],
     pre[class*="language-"] {
     white-space: pre-wrap;

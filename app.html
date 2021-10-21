@@ -50,21 +50,21 @@
     <!-- =========== Main Section ============== -->
     <main class="flex-shrink-0">
         <div class="container mt-5">
-            <h1 class="mb-4">Loan Calculator</h1>
+            <h1 class="mb-4 heading-color">Loan Calculator</h1>
             <div class="row row-cols-1 gy-5">
                 <!-- Left Column -->
                 <div class="col-md-6 bg-light">
 
                     <p class="mb-0">Loan Amount</p>
-                    <input id="loanAmount" type="number" class="form-control mb-3" placeholder="Loan Amount" value=15000 aria-label="Loan Amount">
+                    <input id="loanAmount" type="number" step="0.01" class="form-control mb-3" placeholder="Loan Amount" value=15000 aria-label="Loan Amount">
 
                     <!--payments in months not years-->
                     <p class="mb-0">Payments</p>
-                    <input id="payments" type="number" class="form-control mb-3" placeholder="Payments" value=60 aria-label="Payments">
+                    <input id="payments" type="number" step="0.01" class="form-control mb-3" placeholder="Payments" value=60 aria-label="Payments">
 
                     <!--anual interest rate-->
                     <p class="mb-0">Rate</p>
-                    <input id="rate" type="number" class="form-control mb-3" placeholder="Rate" value=3 aria-label="Rate">
+                    <input id="rate" type="number" step="0.01" class="form-control mb-3" placeholder="Rate" value=3 aria-label="Rate">
 
                     <div class="d-flex justify-content-end">
                         <button id="btnSubmit" class="btn btn-dark">Calculate</button>
@@ -74,10 +74,10 @@
                 <!-- Right Column -->
                 <div class="col-md-6">
                     <div class="d-flex justify-content-center">
-                        <h3 class="fst-italic mb-4">Your Monthly Payments</h3>
+                        <h3 class="fst-italic mb-4 heading-color">Your Monthly Payments</h3>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <!--monthly payment goes here-->
+                        <!--Results go here (monthly payment)-->
                         <p id="monthlyPayment" class="fw-bold fs-1"></p>
                     </div>
                     <div class="row">
@@ -87,19 +87,17 @@
                             <p>Total Cost</p> 
                         </div> 
                         <div class="col-6">
-                            <!-- Results go here -->
-                            <!--<p>$#</p>-->
+                            <!-- Results go here-->
                             <p id="totalPrincipal"></p>
                             <p id="totalInterest"></p>
                             <strong><p id="totalCost"></p></strong>
                         </div>
                     </div>
                 </div>
-                <!-- Results go here -->
                 <div class="row table-responsive">
                     <table class="table mt-4 table-striped table-bordered">
                         <thead>
-                            <tr class="bg-primary text-light">
+                            <tr class="bg-pink text-light table-head">
                                 <th>Month</th>
                                 <th>Payment</th>
                                 <th>Principal</th>
@@ -109,23 +107,7 @@
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <!-- 
-                                <tr>
-                                <td>1</td>
-                                <td>269.53</td>
-                                <td>323</td>
-                                <td>34</td>
-                                <td>32</td>
-                                <td>353236</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>269.53</td>
-                                <td>323</td>
-                                <td>34</td>
-                                <td>32</td>
-                                <td>353236</td>
-                            -->
+                            <!-- Results go here (the table)-->
                         </tbody>
                     </table>
                 </div>
